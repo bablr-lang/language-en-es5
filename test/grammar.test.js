@@ -2,23 +2,21 @@ import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 // eslint-disable-next-line import/no-unresolved
 import * as language from '@bablr/language-en-es5';
-import { buildTag, Context } from 'bablr';
+import { buildTag } from 'bablr';
 import { debugEnhancers } from '@bablr/helpers/enhancers';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
-import { buildIdentifier, buildString } from '@bablr/helpers/builders';
+import { buildIdentifier } from '@bablr/helpers/builders';
 
 let enhancers = undefined;
 
-const ctx = Context.from(language, enhancers?.bablrProduction);
-
 const buildJSTag = (type) => {
-  const matcher = spam`<$${buildString(language.canonicalURL)}:${buildIdentifier(type)} />`;
-  return buildTag(ctx, matcher, undefined, { enhancers });
+  const matcher = spam`<$${buildIdentifier(type)} />`;
+  return buildTag(language, matcher, undefined, { enhancers });
 };
 
 const print = (tree) => {
-  return printPrettyCSTML(tree, { ctx });
+  return printPrettyCSTML(tree.node);
 };
 
 describe('@bablr/language-en-es5', () => {
@@ -28,7 +26,7 @@ describe('@bablr/language-en-es5', () => {
     it('js`{o:null,}`', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`\
         <!0:cstml { bablrLanguage: 'https://bablr.org/languages/universe/es5' }>
-        <$>
+        <$_>
           .:
           <$Object>
             open: <*Punctuator '{' { balanced: '}' } />
@@ -55,7 +53,7 @@ describe('@bablr/language-en-es5', () => {
     it('js`{o(){}}`', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`\
       <!0:cstml { bablrLanguage: 'https://bablr.org/languages/universe/es5' }>
-      <$>
+      <$_>
         .:
         <$Object>
           open: <*Punctuator '{' { balanced: '}' } />
