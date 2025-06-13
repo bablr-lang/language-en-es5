@@ -26,8 +26,7 @@
     "@bablr/agast-vm-helpers": "0.7.1",
     "@bablr/boot": "0.8.1",
     "@bablr/helpers": "0.22.1",
-    "@bablr/language-en-c-comments": "0.7.1",
-    "@bablr/language-en-es3": "0.1.0"
+    "@bablr/language-en-c-comments": "0.7.1"
   },
   "devDependencies": {
     "@bablr/agast-helpers": "0.7.1",

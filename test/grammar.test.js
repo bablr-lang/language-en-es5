@@ -78,7 +78,6 @@ describe('@bablr/language-en-es5', () => {
               <$BlockStatement>
                 openToken: <*Punctuator '{' { balanced: '}' } />
                 closeToken: <*Punctuator '}' { balancer: true } />
-                endToken: null
               </>
             </>
           </>
