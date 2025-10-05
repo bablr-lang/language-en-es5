@@ -16,7 +16,7 @@ const buildJSTag = (type) => {
 };
 
 const print = (tree) => {
-  return printPrettyCSTML(tree.node);
+  return printPrettyCSTML(tree);
 };
 
 describe('@bablr/language-en-es5', () => {
@@ -25,38 +25,29 @@ describe('@bablr/language-en-es5', () => {
 
     it('js`{o:null,}`', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`\
-        <$_>
-          .:
-          <$Object>
-            open: <*Punctuator '{' { balanced: '}' } />
-            #separatorTokens[]: []
-            properties[]$: []
-            properties[]$:
-            <$Property>
-              key$:
-              <$Identifier>
-                value: <*Literal 'o' />
-              </>
-              mapOperator: <*Punctuator ':' />
-              value+$:
-              <$Null>
-                sigilToken: <*Keyword 'null' />
-              </>
+        <$Object>
+          open: <*Punctuator '{' { balanced: '}' } />
+          properties[]$:
+          <$Property>
+            key$:
+            <$Identifier>
+              value: <*Literal 'o' />
             </>
-            #separatorTokens[]: <*Punctuator ',' />
-            close: <*Punctuator '}' { balancer: true } />
+            mapOperator: <*Punctuator ':' />
+            value+$:
+            <$Null>
+              sigilToken: <*Keyword 'null' />
+            </>
           </>
+          #separatorTokens[]: <*Punctuator ',' />
+          close: <*Punctuator '}' { balancer: true } />
         </>\n`);
     });
 
     it('js`{o(){}}`', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`\
-      <$_>
-        .:
         <$Object>
           open: <*Punctuator '{' { balanced: '}' } />
-          #separatorTokens[]: []
-          properties[]$: []
           properties[]$:
           <$Property>
             key$:
@@ -69,8 +60,6 @@ describe('@bablr/language-en-es5', () => {
               sigilToken: null
               id: null
               openParamsToken: <*Punctuator '(' { balanced: ')' } />
-              #separatorTokens[]: []
-              params[]: []
               closeParamsToken: <*Punctuator ')' { balancer: true } />
               body:
               <$BlockStatement>
@@ -80,8 +69,7 @@ describe('@bablr/language-en-es5', () => {
             </>
           </>
           close: <*Punctuator '}' { balancer: true } />
-        </>
-      </>\n`);
+        </>\n`);
     });
   });
 });
