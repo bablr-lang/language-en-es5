@@ -39,7 +39,7 @@ describe('@bablr/language-en-es5', () => {
               sigilToken: <*Keyword 'null' />
             </>
           </>
-          #separatorTokens[]: <*Punctuator ',' />
+          separatorTokens[]: <*Punctuator ',' />
           close: <*Punctuator '}' { balancer: true } />
         </>\n`);
     });
