@@ -26,49 +26,45 @@ describe('@bablr/language-en-es5', () => {
     it('js`{o:null,}`', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`\
         <$Object>
-          openToken*: <*Punctuator '{' { balanced: '}' } />
-          properties[]:
+          openToken*: <* '{' { balanced: '}' } />
+          properties[]+:
+          <$Identifier>
+            value*: <*Literal 'o' />
+          </>
+          ^^^
           <$Property>
-            key:
-            <$Identifier>
-              value*: <*Literal 'o' />
-            </>
-            mapOperator*: <*Punctuator ':' />
+            key: <//>
+            mapOperator*: <* ':' />
             value+:
             <$Null>
               sigilToken*: <*Keyword 'null' />
             </>
           </>
-          #separatorTokens[]: <*Punctuator ',' />
-          closeToken*: <*Punctuator '}' { balancer: true } />
+          #separatorTokens[]: <* ',' />
+          closeToken*: <* '}' { balancer: true } />
         </>\n`);
     });
 
     it('js`{o(){}}`', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`\
         <$Object>
-          openToken*: <*Punctuator '{' { balanced: '}' } />
-          properties[]:
-          <$Property>
-            key:
-            <$Identifier>
-              value*: <*Literal 'o' />
-            </>
-            mapOperator*: null
-            value+:
-            <$FunctionExpression>
-              sigilToken*: null
-              id*: null
-              openParamsToken*: <*Punctuator '(' { balanced: ')' } />
-              closeParamsToken*: <*Punctuator ')' { balancer: true } />
-              body*:
-              <$BlockStatement>
-                openToken*: <*Punctuator '{' { balanced: '}' } />
-                closeToken*: <*Punctuator '}' { balancer: true } />
-              </>
+          openToken*: <* '{' { balanced: '}' } />
+          properties[]+:
+          <$Identifier>
+            value*: <*Literal 'o' />
+          </>
+          ^^^
+          <$Method>
+            id: <//>
+            openParamsToken*: <* '(' { balanced: ')' } />
+            closeParamsToken*: <* ')' { balancer: true } />
+            body*:
+            <$Block>
+              openToken*: <* '{' { balanced: '}' } />
+              closeToken*: <* '}' { balancer: true } />
             </>
           </>
-          closeToken*: <*Punctuator '}' { balancer: true } />
+          closeToken*: <* '}' { balancer: true } />
         </>\n`);
     });
   });
