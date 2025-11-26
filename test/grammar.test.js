@@ -40,7 +40,7 @@ describe('@bablr/language-en-es5', () => {
               sigilToken*: <*Keyword 'null' />
             </>
           </>
-          #separatorTokens[]: <* ',' />
+          #separatorTokens: <* ',' />
           closeToken*: <* '}' { balancer: true } />
         </>\n`);
     });
