@@ -26,7 +26,7 @@ describe('@bablr/language-en-es5', () => {
     it('js`{o:null,}`', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`\
         <$Object>
-          openToken*: <* '{' { balanced: '}' } />
+          openToken*: <* '{' />
           properties[]+:
           <$Identifier>
             value*: <*Literal 'o' />
@@ -41,14 +41,14 @@ describe('@bablr/language-en-es5', () => {
             </>
           </>
           #separatorTokens: <* ',' />
-          closeToken*: <* '}' { balancer: true } />
+          closeToken*: <* '}' />
         </>\n`);
     });
 
     it('js`{o(){}}`', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`\
         <$Object>
-          openToken*: <* '{' { balanced: '}' } />
+          openToken*: <* '{' />
           properties[]+:
           <$Identifier>
             value*: <*Literal 'o' />
@@ -56,15 +56,15 @@ describe('@bablr/language-en-es5', () => {
           ^^^
           <$Method>
             id: <//>
-            openParamsToken*: <* '(' { balanced: ')' } />
-            closeParamsToken*: <* ')' { balancer: true } />
+            openParamsToken*: <* '(' />
+            closeParamsToken*: <* ')' />
             body*:
             <$Block>
-              openToken*: <* '{' { balanced: '}' } />
-              closeToken*: <* '}' { balancer: true } />
+              openToken*: <* '{' />
+              closeToken*: <* '}' />
             </>
           </>
-          closeToken*: <* '}' { balancer: true } />
+          closeToken*: <* '}' />
         </>\n`);
     });
   });
