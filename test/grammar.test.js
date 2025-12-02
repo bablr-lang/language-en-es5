@@ -27,15 +27,15 @@ describe('@bablr/language-en-es5', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`\
         <$Object>
           openToken*: <* '{' />
-          properties[]+:
+          properties[]+$:
           <$Identifier>
             value*: <*Literal 'o' />
           </>
           ^^^
           <$Property>
-            key: <//>
+            key$: <//>
             mapOperator*: <* ':' />
-            value+:
+            value+$:
             <$Null>
               sigilToken*: <*Keyword 'null' />
             </>
@@ -49,13 +49,13 @@ describe('@bablr/language-en-es5', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`\
         <$Object>
           openToken*: <* '{' />
-          properties[]+:
+          properties[]+$:
           <$Identifier>
             value*: <*Literal 'o' />
           </>
           ^^^
           <$Method>
-            id: <//>
+            name$: <//>
             openParamsToken*: <* '(' />
             closeParamsToken*: <* ')' />
             body*:
