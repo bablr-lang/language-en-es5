@@ -19,19 +19,19 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@bablr/agast-vm-helpers": "0.9.0",
-    "@bablr/boot": "0.10.0",
+    "@bablr/agast-vm-helpers": "0.10.0",
+    "@bablr/boot": "0.11.0",
     "@bablr/coroutine": "0.1.0",
-    "@bablr/helpers": "0.24.0",
-    "@bablr/language-en-blank-space": "0.9.0",
-    "@bablr/language-en-c-comments": "0.9.0",
-    "@bablr/language-en-es3": "0.2.0"
+    "@bablr/helpers": "0.25.0",
+    "@bablr/language-en-blank-space": "0.10.0",
+    "@bablr/language-en-c-comments": "0.10.0",
+    "@bablr/language-en-es3": "0.3.0"
   },
   "devDependencies": {
-    "@bablr/agast-helpers": "0.9.0",
+    "@bablr/agast-helpers": "0.10.0",
     "@bablr/eslint-config-base": "github:bablr-lang/eslint-config-base#49f5952efed27f94ee9b94340eb1563c440bf64e",
     "@qnighy/dedent": "0.1.1",
-    "bablr": "0.10.0",
+    "bablr": "^0.11.0",
     "enhanced-resolve": "^5.12.0",
     "eslint": "^7.32.0",
     "eslint-import-resolver-enhanced-resolve": "^1.0.5",
@@ -48,7 +48,10 @@
     "es5",
     "ecmascript"
   ],
-  "repository": "git@github.com:bablr-lang/language-en-es5.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bablr-lang/language-en-es5.git"
+  },
   "homepage": "https://github.com/bablr-lang/language-en-es5",
   "author": "Conrad Buck <conartist6@gmail.com>",
   "license": "MIT"
