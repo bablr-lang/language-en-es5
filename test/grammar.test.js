@@ -25,46 +25,52 @@ describe('@bablr/language-en-es5', () => {
 
     it('js`{o:null,}`', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`\
-        <$Object>
-          openToken*: <* '{' />
-          properties[]+$:
-          <$Identifier>
-            value*: <*Literal 'o' />
-          </>
-          ^^^
-          <$Property>
-            key$: <//>
-            mapOperator*: <* ':' />
-            value+$:
-            <$Null>
-              sigilToken*: <*Keyword 'null' />
+        <$_>
+          _:
+          <$Object>
+            openToken*: <* '{' />
+            properties[]+$:
+            <$Identifier>
+              value*: <*Literal 'o' />
             </>
+            ^^^
+            <$Property>
+              key$: <//>
+              mapOperator*: <* ':' />
+              value+$:
+              <$Null>
+                sigilToken*: <*Keyword 'null' />
+              </>
+            </>
+            #separatorTokens: <* ',' />
+            closeToken*: <* '}' />
           </>
-          #separatorTokens: <* ',' />
-          closeToken*: <* '}' />
         </>\n`);
     });
 
     it('js`{o(){}}`', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`\
-        <$Object>
-          openToken*: <* '{' />
-          properties[]+$:
-          <$Identifier>
-            value*: <*Literal 'o' />
-          </>
-          ^^^
-          <$Method>
-            name$: <//>
-            openParamsToken*: <* '(' />
-            closeParamsToken*: <* ')' />
-            body*:
-            <$Block>
-              openToken*: <* '{' />
-              closeToken*: <* '}' />
+        <$_>
+          _:
+          <$Object>
+            openToken*: <* '{' />
+            properties[]+$:
+            <$Identifier>
+              value*: <*Literal 'o' />
             </>
+            ^^^
+            <$Method>
+              name$: <//>
+              openParamsToken*: <* '(' />
+              closeParamsToken*: <* ')' />
+              body*:
+              <$Block>
+                openToken*: <* '{' />
+                closeToken*: <* '}' />
+              </>
+            </>
+            closeToken*: <* '}' />
           </>
-          closeToken*: <* '}' />
         </>\n`);
     });
   });
