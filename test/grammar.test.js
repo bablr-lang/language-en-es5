@@ -29,20 +29,23 @@ describe('@bablr/language-en-es5', () => {
           _:
           <$Object>
             openToken*: <* '{' />
-            properties[]+$:
-            <$Identifier>
-              value*: <*Literal 'o' />
-            </>
-            ^^^
-            <$Property>
-              key$: <//>
-              mapOperator*: <* ':' />
-              value+$:
-              <$Null>
-                sigilToken*: <*Keyword 'null' />
+            elements[]:
+            <$ObjectElement>
+              value+:
+              <$Identifier>
+                value*: <*Literal 'o' />
               </>
+              ^^^
+              <$Property>
+                key$: <//>
+                mapOperator*: <* ':' />
+                value+$:
+                <$Null>
+                  sigilToken*: <*Keyword 'null' />
+                </>
+              </>
+              separatorToken*: <* ',' />
             </>
-            #separatorTokens: <* ',' />
             closeToken*: <* '}' />
           </>
         </>\n`);
@@ -54,19 +57,22 @@ describe('@bablr/language-en-es5', () => {
           _:
           <$Object>
             openToken*: <* '{' />
-            properties[]+$:
-            <$Identifier>
-              value*: <*Literal 'o' />
-            </>
-            ^^^
-            <$Method>
-              name$: <//>
-              openParamsToken*: <* '(' />
-              closeParamsToken*: <* ')' />
-              body*:
-              <$Block>
-                openToken*: <* '{' />
-                closeToken*: <* '}' />
+            elements[]:
+            <$ObjectElement>
+              value+:
+              <$Identifier>
+                value*: <*Literal 'o' />
+              </>
+              ^^^
+              <$Method>
+                name$: <//>
+                openParamsToken*: <* '(' />
+                closeParamsToken*: <* ')' />
+                body*:
+                <$Block>
+                  openToken*: <* '{' />
+                  closeToken*: <* '}' />
+                </>
               </>
             </>
             closeToken*: <* '}' />
