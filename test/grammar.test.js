@@ -30,10 +30,7 @@ describe('@bablr/language-en-es5', () => {
             openToken*: <* '{' />
             elements[]:
             <$ObjectElement>
-              value+:
-              <$Identifier>
-                value*: <*Literal 'o' />
-              </>
+              value+: <*Identifier 'o' />
               ^^^
               <$Property>
                 key$: <//>
@@ -58,10 +55,7 @@ describe('@bablr/language-en-es5', () => {
             openToken*: <* '{' />
             elements[]:
             <$ObjectElement>
-              value+:
-              <$Identifier>
-                value*: <*Literal 'o' />
-              </>
+              value+: <*Identifier 'o' />
               ^^^
               <$Method>
                 name$: <//>
