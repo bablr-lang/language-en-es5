@@ -1,4 +1,3 @@
-import { spam } from '@bablr/boot';
 import { dedent } from '@qnighy/dedent';
 // eslint-disable-next-line import/no-unresolved
 import language from '@bablr/language-en-es5';
@@ -6,11 +5,12 @@ import { buildTag } from 'bablr';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
 import { buildIdentifier } from '@bablr/helpers/builders';
+import { m } from '@bablr/helpers/grammar';
 
 let enhancers = undefined;
 
 const buildJSTag = (type) => {
-  const matcher = spam`<$${buildIdentifier(type)} />`;
+  const matcher = m`<$${type} />`;
   return buildTag(language, matcher, undefined, { enhancers });
 };
 
