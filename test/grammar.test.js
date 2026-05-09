@@ -4,7 +4,6 @@ import language from '@bablr/language-en-es5';
 import { buildTag } from 'bablr';
 import { expect } from 'expect';
 import { printPrettyCSTML } from '@bablr/helpers/tree';
-import { buildIdentifier } from '@bablr/helpers/builders';
 import { m } from '@bablr/helpers/grammar';
 
 let enhancers = undefined;
