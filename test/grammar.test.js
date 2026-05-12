@@ -43,7 +43,8 @@ describe('@bablr/language-en-es5', () => {
             </>
             closeToken*: <* '}' />
           </>
-        </>\n`);
+        </>
+      `);
     });
 
     it('js`{o(){}}`', () => {
@@ -69,7 +70,8 @@ describe('@bablr/language-en-es5', () => {
             </>
             closeToken*: <* '}' />
           </>
-        </>\n`);
+        </>
+      `);
     });
   });
 });
