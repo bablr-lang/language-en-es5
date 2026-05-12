@@ -22,7 +22,7 @@ describe('@bablr/language-en-es5', () => {
     const js = buildJSTag('Object');
 
     it('js`{o:null,}`', () => {
-      expect(print(js`{o:null,}`)).toEqual(dedent`\
+      expect(print(js`{o:null,}`)).toEqual(dedent`
         <$_>
           _:
           <$Object>
@@ -47,7 +47,7 @@ describe('@bablr/language-en-es5', () => {
     });
 
     it('js`{o(){}}`', () => {
-      expect(print(js`{o(){}}`)).toEqual(dedent`\
+      expect(print(js`{o(){}}`)).toEqual(dedent`
         <$_>
           _:
           <$Object>
