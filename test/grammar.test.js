@@ -9,7 +9,7 @@ import { m } from '@bablr/helpers/grammar';
 let enhancers = undefined;
 
 const buildJSTag = (type) => {
-  const matcher = m`<$${type} />`;
+  const matcher = m`<${type} />`;
   return buildTag(language, matcher, undefined, { enhancers });
 };
 
@@ -23,19 +23,19 @@ describe('@bablr/language-en-es5', () => {
 
     it('js`{o:null,}`', () => {
       expect(print(js`{o:null,}`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Object>
+          <Object>
             openToken*: <* '{' />
             elements[]:
-            <$ObjectElement>
+            <ObjectElement>
               value+: <*Identifier 'o' />
               ^^^
-              <$Property>
+              <Property>
                 key$: <//>
                 mapOperator*: <* ':' />
                 value+$:
-                <$Null>
+                <Null>
                   sigilToken*: <*Keyword 'null' />
                 </>
               </>
@@ -49,20 +49,20 @@ describe('@bablr/language-en-es5', () => {
 
     it('js`{o(){}}`', () => {
       expect(print(js`{o(){}}`)).toEqual(dedent`
-        <$_>
+        <_>
           _:
-          <$Object>
+          <Object>
             openToken*: <* '{' />
             elements[]:
-            <$ObjectElement>
+            <ObjectElement>
               value+: <*Identifier 'o' />
               ^^^
-              <$Method>
+              <Method>
                 name$: <//>
                 openParamsToken*: <* '(' />
                 closeParamsToken*: <* ')' />
                 body*:
-                <$Block>
+                <Block>
                   openToken*: <* '{' />
                   closeToken*: <* '}' />
                 </>
