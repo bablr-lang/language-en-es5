@@ -29,10 +29,9 @@ describe('@bablr/language-en-es5', () => {
             openToken*: <* '{' />
             elements[]:
             <ObjectElement>
-              value+: <*Identifier 'o' />
-              ^^^
+              value+:
               <Property>
-                key$: <//>
+                key$: <*Identifier 'o' />
                 mapOperator*: <* ':' />
                 value+$:
                 <Null>
@@ -55,10 +54,9 @@ describe('@bablr/language-en-es5', () => {
             openToken*: <* '{' />
             elements[]:
             <ObjectElement>
-              value+: <*Identifier 'o' />
-              ^^^
+              value+:
               <Method>
-                name$: <//>
+                name$: <*Identifier 'o' />
                 openParamsToken*: <* '(' />
                 closeParamsToken*: <* ')' />
                 body*:
