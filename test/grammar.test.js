@@ -3,7 +3,7 @@ import { dedent } from '@qnighy/dedent';
 import language from '@bablr/language-en-es5';
 import { buildTag } from 'bablr';
 import { expect } from 'expect';
-import { printCSTML } from '@bablr/helpers/tree';
+import { printCSTML, hoist, streamFromTree } from '@bablr/agast-helpers/stream';
 import { m } from '@bablr/helpers/grammar';
 
 let enhancers = undefined;
@@ -14,7 +14,7 @@ const buildJSTag = (type) => {
 };
 
 const print = (tree) => {
-  return printCSTML(tree);
+  return printCSTML(hoist(streamFromTree(tree)));
 };
 
 describe('@bablr/language-en-es5', () => {
@@ -29,11 +29,11 @@ describe('@bablr/language-en-es5', () => {
             openToken*: <* '{' />
             elements[]:
             <ObjectElement>
-              value+:
+              value:
               <Property>
                 key$: <*Identifier 'o' />
                 mapOperator*: <* ':' />
-                value+$:
+                value$:
                 <Null>
                   sigilToken*: <*Keyword 'null' />
                 </>
@@ -54,7 +54,7 @@ describe('@bablr/language-en-es5', () => {
             openToken*: <* '{' />
             elements[]:
             <ObjectElement>
-              value+:
+              value:
               <Method>
                 name$: <*Identifier 'o' />
                 openParamsToken*: <* '(' />
