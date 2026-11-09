@@ -28,18 +28,15 @@ describe('@bablr/language-en-es5', () => {
           <Object>
             openToken*: <* '{' />
             elements[]:
-            <ObjectElement>
-              value:
-              <Property>
-                key$: <*Identifier 'o' />
-                mapOperator*: <* ':' />
-                value$:
-                <Null>
-                  sigilToken*: <*Keyword 'null' />
-                </>
+            <Property>
+              key$: <*Identifier 'o' />
+              mapOperator*: <* ':' />
+              value$:
+              <Null>
+                sigilToken*: <*Keyword 'null' />
               </>
-              separatorToken*: <* ',' />
             </>
+            #separatorToken: <* ',' />
             closeToken*: <* '}' />
           </>
         </>
@@ -53,17 +50,14 @@ describe('@bablr/language-en-es5', () => {
           <Object>
             openToken*: <* '{' />
             elements[]:
-            <ObjectElement>
-              value:
-              <Method>
-                name$: <*Identifier 'o' />
-                openParamsToken*: <* '(' />
-                closeParamsToken*: <* ')' />
-                body*:
-                <Block>
-                  openToken*: <* '{' />
-                  closeToken*: <* '}' />
-                </>
+            <Method>
+              name$: <*Identifier 'o' />
+              openParamsToken*: <* '(' />
+              closeParamsToken*: <* ')' />
+              body*:
+              <Block>
+                openToken*: <* '{' />
+                closeToken*: <* '}' />
               </>
             </>
             closeToken*: <* '}' />
